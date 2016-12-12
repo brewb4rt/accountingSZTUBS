@@ -1,2 +1,3 @@
 # accountingSZTUBS
-Abrechnungsgenerator
+Abrechnungsgenerator fürs Sportzentrum TUBS
+
