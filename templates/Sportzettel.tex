@@ -1,0 +1,155 @@
+\documentclass[10pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{tabularx}
+\usepackage{eurosym}
+\DeclareRobustCommand{\officialeuro}{%
+  \ifmmode\expandafter\text\fi
+  {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+\usepackage[tmargin=2.5cm,bmargin=1cm,lmargin=2.5cm,rmargin=2.0cm]{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\squeezeup}{\vspace{-2.5mm}}
+\newcolumntype{C}[1]{>{\centering}p{#1}}
+\usepackage[overlay,absolute]{textpos}
+
+\newcommand\PlaceText[3]{%
+\begin{textblock*}{10in}(#1,#2)  %% change width of box from 10in as you wish
+#3
+\end{textblock*}
+}%
+\textblockorigin{-5mm}{0mm}   %% Default origin top left corner and it can be changed in this line
+\usepackage{array}
+
+\newlength\Origarrayrulewidth
+
+% horizontal rule equivalent to \cline but with 2pt width
+\newcommand{\Cline}[1]{%
+ \noalign{\global\setlength\Origarrayrulewidth{\arrayrulewidth}}%
+ \noalign{\global\setlength\arrayrulewidth{2pt}}\cline{#1}%
+ \noalign{\global\setlength\arrayrulewidth{\Origarrayrulewidth}}%
+}
+
+% draw a vertical rule of width 2pt on both sides of a cell
+\newcommand\Thickvrule[1]{%
+  \multicolumn{1}{!{\vrule width 2pt}c!{\vrule width 2pt}}{#1}%
+}
+
+% draw a vertical rule of width 2pt on the left side of a cell
+\newcommand\Thickvrulel[1]{%
+  \multicolumn{1}{!{\vrule width 2pt}c|}{#1}%
+}
+
+% draw a vertical rule of width 2pt on the right side of a cell
+\newcommand\Thickvruler[1]{%
+  \multicolumn{1}{|c!{\vrule width 2pt}}{#1}%
+}
+
+\begin{document}
+\pagenumbering{gobble}
+{\large
+\begin{tabular}{@{}p{3.0in}l}
+\begin{tabular}{l}
+An die\\
+TU Braunschweig\\
+Sportzentrum \\
+Franz-Liszt-Straße 34\\
+38106 Braunschweig\\
+\end{tabular}
+&
+\begin{tabular}{ll}
+Name &\line(1,0){180}\\
+Adresse&\line(1,0){180}\\
+			&\line(1,0){180}\\
+IBAN&\line(1,0){180}\\
+\multicolumn{2}{l}{\footnotesize\textbf{Die Angabe der IBAN ist zwingend notwendig!}}\\
+\end{tabular}
+\end{tabular}}
+\bigskip
+\bigskip
+\begin{table}[ht]
+    \begin{tabular}{r@{}p{3.5in}l}
+      
+			\includegraphics[width=3.51cm]{logo.jpg}
+			&
+			
+			\centering\Large\textbf{TRAINERABRECHNUNG}   
+			
+			&\includegraphics[width=3.51cm]{logo.jpg} \\
+    \end{tabular}
+\end{table}\\
+\bigskip
+\bigskip
+\normalsize
+{\linethickness{0.6mm}
+\textbf{Sportart: \line(1,0){170}\ \ \ \ Monat: \line(1,0){170}}}
+\squeezeup\squeezeup\squeezeup
+\begin{table}[ht]
+	\centering
+	\caption*{\large Nachstehend aufgeführte Stunden sind von mir tatsächlich geleistet worden.}
+		\begin{tabularx}{\textwidth}{|C{1.5cm}|C{2,1832cm}|C{1.025cm}|C{1.025cm}|C{1.025cm}|C{1.025cm}|C{1.025cm}|C{1.025cm}|C{1.025cm}|c|}
+		\hline
+		\textbf{Datum}&\textbf{Arbeitszeit}&\textbf{Std.}&\textbf{6,50}&\textbf{9,00}&\textbf{11,50}&\textbf{13,50}&\textbf{15,00}&&\begin{tabular}[x]{@{}c@{}}\textbf{Teil-}\\\textbf{nehmer}\end{tabular} \\ \hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		\multicolumn{10}{|l|}{}\\
+		\multicolumn{10}{|l|}{\large Vertretungsstunden (Sportart wie oben)}\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\hline
+		&&&&&&&&&\\\cline{1-2}\Cline{3-8}\cline{9-10}
+		\multicolumn{1}{l}{}&\multicolumn{1}{l}{Stunden}&\Thickvrule{}&\Thickvruler{}&\Thickvruler{}&\Thickvruler{}&\Thickvruler{}&\Thickvruler{}\\
+		\multicolumn{1}{l}{}&\multicolumn{1}{l}{insgesamt}&\Thickvrule{}&\Thickvruler{}&\Thickvruler{}&\Thickvruler{}&\Thickvruler{}&\Thickvruler{}\\\Cline{3-8}
+		\end{tabularx}
+\end{table}\\\\
+\PlaceText{19.6cm}{10.7cm}{\rotatebox{90}{\footnotesize \textbf{Bitte nicht vergessen die Anzahl der Teilnehmer einzutragen!}}} 
+\begin{minipage}{0.40\textwidth}
+{\large Braunschweig, den \line(1,0){79}}\\\\\\\\
+\line(1,0){184}\\
+\squeezeup
+{\large Unterschrift Trainer(in)} \\\\\\
+{\large Sachlich und rechnerisch richtig:}\\\\\\\\
+\line(1,0){184}\\
+\squeezeup
+{\large Sportzentrum }
+\end{minipage}
+\begin{minipage}{0.03\textwidth}
+\begin{tabularx}{\textwidth}{c}
+\end{tabularx}
+\end{minipage}
+\begin{minipage}{0.57\textwidth}
+	\begin{tabularx}{\textwidth}{|l|l|l|l|l|p{2.562cm}|}
+		\hline
+			\multicolumn{6}{|c|}{\textbf{Eingangsrechnung}}\\
+		\hline
+		\footnotesize Belegart&\multicolumn{2}{|l|}{\footnotesize Buchungsdatum}&\multicolumn{3}{|l|}{\footnotesize Beleg-Nr.}\\
+		KA&\multicolumn{2}{|l|}{}&\multicolumn{3}{|l|}{}\\
+		\hline
+		\multicolumn{2}{|l|}{\footnotesize S (Sachkonto/Kreditor)}&\footnotesize StSchl.&\multicolumn{2}{|l|}{\footnotesize Betrag in \euro{}}&\footnotesize KST/IA-Nr.\\
+		\multicolumn{2}{|l|}{667 400}&&\multicolumn{2}{|l|}{}&305 000 00\\\hline
+		\multicolumn{2}{|l|}{\footnotesize H (Kreditor/Sachkonto)}&\footnotesize StSchl.&\multicolumn{2}{|l|}{\footnotesize Betrag in \euro{}}&\footnotesize KST/IA-Nr.\\
+		\multicolumn{2}{|l|}{}& &\multicolumn{2}{|l|}{}&305 000 00\\\hline
+	\multicolumn{2}{|l|}{\footnotesize Sachlich richtig}&\multicolumn{2}{|l|}{\footnotesize Sachlich und rechnerisch }&\multicolumn{2}{|l|}{\footnotesize Rechnerisch }\\
+	\multicolumn{2}{|l|}{\footnotesize Im Auftrage}&\multicolumn{2}{|l|}{\footnotesize richtig}&\multicolumn{2}{|l|}{richtig}\\
+	\multicolumn{2}{|l|}{}&\multicolumn{2}{|l|}{}&\multicolumn{2}{|l|}{}\\
+	\multicolumn{2}{|l|}{}&\multicolumn{2}{|l|}{}&\multicolumn{2}{|l|}{}\\
+	\multicolumn{2}{|l|}{\footnotesize  (Datum, Unterschrift }&\multicolumn{2}{|l|}{}&\multicolumn{2}{|l|}{}\\
+	\multicolumn{2}{|l|}{\footnotesize  Anordnungsbefugte/r)}&\multicolumn{2}{|l|}{}&\multicolumn{2}{|l|}{}\\\hline
+	\multicolumn{4}{|l|}{\footnotesize Kontiert/Vorerfasst von  }&\multicolumn{2}{|l|}{\footnotesize Datum}\\
+	\multicolumn{4}{|l|}{\footnotesize Gebucht/Freigegeben von   }&\multicolumn{2}{|l|}{}\\\hline
+	\end{tabularx}
+\end{minipage}
+
+\end{document}
