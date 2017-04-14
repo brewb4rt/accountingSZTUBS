@@ -18,15 +18,16 @@ class Account(models.Model):
 
 class Course(models.Model):
     #id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=20,name='Course title')
-    employee = models.ForeignKey('Trainer')
-    customers = models.ForeignKey('Customer')
+    title = models.CharField(max_length=20)
+    employee = models.ForeignKey('Trainer', blank=True, null=True)
+    customers = models.ForeignKey('Customer', blank=True, null=True)
     autoBill = models.BooleanField('Shall this course be auto-billed?')
-    beginTime = models.DateTimeField('Starting time of the course')
-    endTime = models.DateTimeField('End time of the course')
+    beginTime = models.TimeField('Starting time of the course')
+    endTime = models.TimeField('End time of the course')
     beginDate = models.DateField('Start date of the course')
     endDate = models.DateField('End date of the course')
-    dayOfWeek = models.CharField(max_length=10, name='weekday of the session')
+    dayOfWeek = models.CharField(max_length=10)
+
     #nextSession = models.DateTimeField(name='next session')
 
     def next_session(self):
@@ -41,7 +42,6 @@ class Course(models.Model):
 
     next_session.admin_order_field = 'nextSession'
     next_session.short_description = 'next session'
-    next_session
 
     def __str__(self):
         return self.title
@@ -50,11 +50,15 @@ class Course(models.Model):
         return self.endTime - self.beginTime
 
 class Customer(models.Model):
-    name = models.CharField(max_length=30, name='Customer name')
+    name = models.CharField(max_length=30)
     #id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    courses = models.ForeignKey('Course')
+    courses = models.ForeignKey('Course', blank=True, null=True)
     SEPAvalid = models.BooleanField('Is the SEPA valid?')
-    address = models.CharField(max_length=30)
+    addressStreet = models.CharField(max_length=30, name='street', default='Franz-Liszt-Straße')
+    addressHouseNr = models.IntegerField(name='house number', default=34)
+    addressHouseNrExtra = models.CharField(max_length=1,name='extra to the house number', blank=True)
+    addressPostalCode = models.IntegerField(name='postal code', default=38106)
+    addressCity = models.CharField( max_length=20, name='city', default='Braunschweig')
     account = models.ForeignKey('Account', name='Account which pays for courses')
 
     def __str__(self):
@@ -62,12 +66,16 @@ class Customer(models.Model):
 
 
 class Trainer(models.Model):
-    name = models.CharField(max_length=30, name='Customer name')
-    address = models.CharField(max_length=30)
+    name = models.CharField(max_length=30)
+    addressStreet = models.CharField(max_length=30, name ='street', default='Franz-Liszt-Straße')
+    addressHouseNr = models.IntegerField(name='house number', default=34)
+    addressHouseNrExtra = models.CharField(max_length=1, name='extra to the house number', blank=True)
+    addressPostalCode = models.IntegerField(name='postal code', default=38106)
+    addressCity = models.CharField(name='city', max_length=20, default='Braunschweig')
    #account data of trainer
     accountInfo = models.ForeignKey('Account', name='Account to pay to')
    #courses the trainer gives
-    courses = models.ForeignKey('Course', name='Courses given by trainer')#models.UUID
+    courses = models.ForeignKey('Course', name='Courses given by trainer', blank=True, null=True)#models.UUID
     dateFirstAid = models.DateField('latest first aid certificate')
 
 

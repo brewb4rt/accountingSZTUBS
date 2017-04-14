@@ -13,6 +13,8 @@ class IndexView(generic.ListView):
         Return the last five published questions (not including those set to be
         published in the future).
         """
-        return Course.objects.filter(
-            pub_date__lte=timezone.now()
-        ).order_by('-pub_date')[:5]
+        return Course.objects.all().order_by('next_session')
+
+class CourseDetailView(generic.ListView):
+    template_name= 'billGenerator/course_detail.html'
+    context_object_name = 'course_detail'
